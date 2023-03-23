@@ -1,0 +1,13 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerTitle {
+  color: #8a97a5;
+}
+
+.headerLogo {
+  fill: #fff;
+}
