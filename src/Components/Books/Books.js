@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchArea } from "../SearchArea/SearchArea";
+import { BooksList } from "../BooksList/BooksList";
 import request from "superagent";
 
 export class Books extends React.Component {
@@ -17,7 +18,9 @@ export class Books extends React.Component {
     request
       .get(`${this.pathURL}`)
       .query({ q: this.state.searchField })
-      .then((data) => console.log(data));
+      .then((data) => {
+        this.setState({ books: [...data.body.items] });
+      });
   };
 
   handleSearch = (e) => {
@@ -33,6 +36,7 @@ export class Books extends React.Component {
           searchBook={this.searchBook}
           handleSearch={this.handleSearch}
         />
+        <BooksList books={this.state.books} />
       </div>
     );
   }

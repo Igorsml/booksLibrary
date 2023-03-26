@@ -1,0 +1,9 @@
+.booksList {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2em;
+  color: #fff;
+}

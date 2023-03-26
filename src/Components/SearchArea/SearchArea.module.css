@@ -2,15 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .searchAreaInput {
   width: 50vw;
   height: 5vh;
   border-radius: .3em;
+  padding: 1em;
   margin-right: 1em;
-  font-size: 1em
+  font-size: 1em;
+  outline: none;
+}
+
+.searchAreaInput:focus {
+  filter: drop-shadow(0 0 0.40rem rgb(20, 136, 230));
 }
 
 .SearchAreaButton {
