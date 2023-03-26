@@ -13,10 +13,8 @@ export class BooksList extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         for (const book of data) {
-          console.log(book);
         }
       });
-    console.log(books);
   };
 
   render() {

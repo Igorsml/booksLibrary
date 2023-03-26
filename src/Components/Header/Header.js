@@ -3,10 +3,6 @@ import css from "./Header.module.css";
 import { ReactComponent as SvgLogo } from "../../assets/icons/Logo.svg";
 
 export class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <header className={css.headerContainer}>

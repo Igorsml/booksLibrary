@@ -1,0 +1,37 @@
+.searchArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.searchAreaInput {
+  width: 50vw;
+  height: 5vh;
+  border-radius: .3em;
+  margin-right: 1em;
+  font-size: 1em
+}
+
+.SearchAreaButton {
+  background-color: #315b92;
+  color: #fff;
+  width: 20vw;
+  height: 5vh;
+  border-radius: .3em;
+  border: 0;
+  font-size: 1em;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .2s linear;
+}
+
+.SearchAreaButton:hover {
+  opacity: .7;
+  transition: opacity .2s linear;
+}
+
+.SearchAreaButton:active {
+  opacity: 1;
+  transition: opacity .2s linear;
+}
