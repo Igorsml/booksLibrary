@@ -1,7 +1,24 @@
 .bookCard {
   width: 25%;
+  height: 50vh;
   border: 1px solid #ccc;
   margin: 1em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.bookCard h2, h3 {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.bookCard h3 {
+  font-size: .9em;
+}
+
+.bookCard a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .bookCardImg {

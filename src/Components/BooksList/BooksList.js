@@ -14,7 +14,7 @@ export class BooksList extends React.Component {
           return (
             <BookCard
               ket={book.id}
-              bookHref={book.volumeInfo.selfLink}
+              bookHref={book.volumeInfo.previewLink}
               bookImg={book.volumeInfo.imageLinks.thumbnail}
               bookTitle={book.volumeInfo.title}
               bookAuthor={book.volumeInfo.authors}
