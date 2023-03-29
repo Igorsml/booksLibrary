@@ -1,15 +1,16 @@
 .bookCard {
-  width: 25%;
-  height: 50vh;
+  width: 15%;
+  min-height: 65vh;
   border: 1px solid #ccc;
+  border-radius: .5em;
   margin: 1em;
   padding: 1em;
   font-size: 1em;
 }
 
 .bookCard h2, h3 {
-  font-size: 1em;
-  margin-bottom: 1em;
+  font-size: 1.3em;
+  margin: 1em 0;
 }
 
 .bookCard h3 {
@@ -21,6 +22,17 @@
   color: inherit;
 }
 
+.bookCard a:hover {
+  color: rgb(20, 136, 230);
+}
+
 .bookCardImg {
+  user-select: none;
   width: 100%;
+  transform: scale(1);
+	transition: .3s ease-in-out;
+}
+
+.bookCardImg:hover {
+  transform: scale(1.03);
 }

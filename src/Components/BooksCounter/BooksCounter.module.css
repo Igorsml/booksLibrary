@@ -1,0 +1,10 @@
+
+.headerBooksCounterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booksCounter, .booksPagesCounter {
+  color: #80b6f0;
+}

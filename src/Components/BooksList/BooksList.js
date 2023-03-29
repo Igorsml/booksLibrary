@@ -3,10 +3,6 @@ import css from "./BooksList.module.css";
 import { BookCard } from "../BookCard/BookCard";
 
 export class BooksList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={css.booksList}>
