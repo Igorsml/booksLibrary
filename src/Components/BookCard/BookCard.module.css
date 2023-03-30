@@ -1,6 +1,7 @@
 .bookCard {
   width: 15%;
-  min-height: 65vh;
+  min-height: 50vh;
+  height: 100%;
   border: 1px solid #ccc;
   border-radius: .5em;
   margin: 1em;
