@@ -21,6 +21,7 @@ export class BookCard extends React.Component {
             <p>Published: {this.props.bookPublished}</p>
           )}
           {this.props.bookPageCount && <p>Pages: {this.props.bookPageCount}</p>}
+          {<div>+</div>}
         </div>
       </div>
     );

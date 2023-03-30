@@ -6,6 +6,7 @@
   margin: 1em;
   padding: 1em;
   font-size: 1em;
+  box-shadow: 4px 4px 8px 0px rgba(83, 172, 240, 0.2);
 }
 
 .bookCard h2, h3 {
@@ -29,6 +30,7 @@
 .bookCardImg {
   user-select: none;
   width: 100%;
+  border-radius: .3em;
   transform: scale(1);
 	transition: .3s ease-in-out;
 }
