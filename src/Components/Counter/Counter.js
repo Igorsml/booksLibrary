@@ -1,19 +1,16 @@
 import css from "./Counter.module.css";
-import counter from "../../service/counter.js";
-import { observer } from "mobx-react-lite";
+import React from "react";
 
-export const Counter = observer(() => {
-  return (
-    <div className={css.counterContainer}>
-      {counter.total}
-      <div className={css.counterButtons}>
-        <button className={css.btn} onClick={() => counter.decrement()}>
-          -
-        </button>
-        <button className={css.btn} onClick={() => counter.increment()}>
-          +
-        </button>
+export class Counter extends React.Component {
+  render() {
+    return (
+      <div className={css.counterContainer}>
+        <div className={css.counterButtons}>
+          <button className={css.btn} onClick={this.props.handleCount}>
+            +
+          </button>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+}

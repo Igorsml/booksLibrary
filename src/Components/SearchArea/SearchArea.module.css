@@ -25,10 +25,12 @@
   background-color: #315b92;
   color: #fff;
   width: 20vw;
-  height: 5vh;
+  min-height: 5vh;
+  height: 100%;
   border-radius: .3em;
   border: 0;
   font-size: 1em;
+  padding: 0.5em 0;
   cursor: pointer;
   opacity: 1;
   transition: opacity .2s linear;

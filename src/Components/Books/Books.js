@@ -1,43 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { SearchArea } from "../SearchArea/SearchArea";
 import { BooksList } from "../BooksList/BooksList";
 import request from "superagent";
 
-export class Books extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [],
-      searchField: "",
-    };
-  }
-  pathURL = "https://www.googleapis.com/books/v1/volumes";
+export function Books() {
+  const [books, SetBooks] = useState([]);
+  const [searchField, SetSearchField] = useState("");
 
-  searchBook = (e) => {
+  const pathURL = "https://www.googleapis.com/books/v1/volumes";
+
+  const searchBook = (e) => {
     e.preventDefault();
     request
-      .get(`${this.pathURL}`)
-      .query({ q: this.state.searchField })
+      .get(`${pathURL}`)
+      .query({ q: searchField })
       .then((data) => {
-        this.setState({ books: [...data.body.items] });
+        SetBooks([...data.body.items]);
       });
   };
 
-  handleSearch = (e) => {
-    this.setState({
-      searchField: e.target.value,
-    });
-  };
-
-  render() {
+  const handleSearch = (e) => SetSearchField(e.target.value);
+  try {
     return (
       <div>
-        <SearchArea
-          searchBook={this.searchBook}
-          handleSearch={this.handleSearch}
-        />
-        <BooksList books={this.state.books} />
+        <SearchArea searchBook={searchBook} handleSearch={handleSearch} />
+        <BooksList books={books} />
       </div>
     );
+  } catch (e) {
+    console.log(e);
   }
 }

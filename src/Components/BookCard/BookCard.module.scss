@@ -11,7 +11,7 @@
 }
 
 .bookCard h2, h3 {
-  font-size: 1.3em;
+  font-size: 1em;
   margin: 1em 0;
 }
 
@@ -22,11 +22,13 @@
 .bookCard a {
   text-decoration: none;
   color: inherit;
+
+  &:hover { 
+    color: rgb(20, 136, 230);
+  }
 }
 
-.bookCard a:hover {
-  color: rgb(20, 136, 230);
-}
+
 
 .bookCardImg {
   user-select: none;
@@ -34,8 +36,8 @@
   border-radius: .3em;
   transform: scale(1);
 	transition: .3s ease-in-out;
-}
-
-.bookCardImg:hover {
-  transform: scale(1.03);
+  
+  &:hover {
+    transform: scale(1.03);
+  }
 }

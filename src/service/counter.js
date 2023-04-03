@@ -2,20 +2,17 @@ import { makeAutoObservable } from "mobx";
 
 class Counter {
   count = 0;
+
   constructor() {
     makeAutoObservable(this);
   }
 
-  increment() {
-    this.count += 1;
+  onHandleClick() {
+    this.count += this.props.bookPageCount;
   }
 
   decrement() {
     this.count -= 1;
-  }
-
-  get total() {
-    return `total: ${this.count}`;
   }
 }
 

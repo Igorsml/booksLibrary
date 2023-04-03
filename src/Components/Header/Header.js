@@ -7,7 +7,7 @@ export class Header extends React.Component {
     return (
       <header className={css.headerContainer}>
         <SvgLogo className={css.headerLogo} />
-        <h1 className={css.headerTitle}>Vsesoki</h1>
+        <h1 className={css.headerTitle}>Books Library</h1>
       </header>
     );
   }

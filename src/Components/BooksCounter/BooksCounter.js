@@ -6,6 +6,7 @@ export class BooksCounter extends React.Component {
     super(props);
     this.state = { pageCount: 0, booksCount: 0 };
   }
+
   render() {
     return (
       <div className={css.headerBooksCounterContainer}>
