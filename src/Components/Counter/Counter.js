@@ -1,16 +1,21 @@
-import css from "./Counter.module.css";
+import css from "./Counter.module.scss";
 import React from "react";
 
-export class Counter extends React.Component {
-  render() {
-    return (
-      <div className={css.counterContainer}>
-        <div className={css.counterButtons}>
-          <button className={css.btn} onClick={this.props.handleCount}>
-            +
-          </button>
-        </div>
-      </div>
-    );
-  }
-}
+export const Counter = (props) => {
+  return (
+    <div className={css.counterContainer}>
+      <button
+        className={css.btn}
+        onClick={() => props.handleCountIncrement(props.bookPageCount)}
+      >
+        ➕
+      </button>
+      <button
+        className={css.btn}
+        onClick={() => props.handleCountDecrement(props.bookPageCount)}
+      >
+        ➖
+      </button>
+    </div>
+  );
+};

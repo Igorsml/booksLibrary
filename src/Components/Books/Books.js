@@ -20,14 +20,10 @@ export function Books() {
   };
 
   const handleSearch = (e) => SetSearchField(e.target.value);
-  try {
-    return (
-      <div>
-        <SearchArea searchBook={searchBook} handleSearch={handleSearch} />
-        <BooksList books={books} />
-      </div>
-    );
-  } catch (e) {
-    console.log(e);
-  }
+  return (
+    <div>
+      <SearchArea searchBook={searchBook} handleSearch={handleSearch} />
+      <BooksList books={books} />
+    </div>
+  );
 }

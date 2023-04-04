@@ -1,0 +1,21 @@
+$bookListMainColor: #9fadbc;
+
+.booksList {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: 2em;
+  color: $bookListMainColor
+}
+
+.BooksCounterContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em 0;
+}
+
+.BooksCounterContainer {
+  color: $bookListMainColor
+}

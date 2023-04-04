@@ -1,14 +1,12 @@
 import React from "react";
 import css from "./Header.module.css";
-import { ReactComponent as SvgLogo } from "../../assets/icons/Logo.svg";
+import { ReactComponent as SvgLogo } from "../assets/icons/Logo.svg";
 
-export class Header extends React.Component {
-  render() {
-    return (
-      <header className={css.headerContainer}>
-        <SvgLogo className={css.headerLogo} />
-        <h1 className={css.headerTitle}>Books Library</h1>
-      </header>
-    );
-  }
-}
+export const Header = () => {
+  return (
+    <header className={css.headerContainer}>
+      <SvgLogo className={css.headerLogo} />
+      <h1 className={css.headerTitle}>Books Library</h1>
+    </header>
+  );
+};

@@ -1,22 +1,20 @@
 import React from "react";
-import css from "./SearchArea.module.css";
+import scss from "./SearchArea.module.scss";
 
-export class SearchArea extends React.Component {
-  render() {
-    return (
-      <div className={css.searchArea}>
-        <form onSubmit={this.props.searchBook} action="">
-          <input
-            className={css.searchAreaInput}
-            autoFocus
-            onChange={this.props.handleSearch}
-            type="search"
-          />
-          <button className={css.SearchAreaButton} type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+export const SearchArea = (props) => {
+  return (
+    <div className={scss.searchArea}>
+      <form onSubmit={props.searchBook} action="">
+        <input
+          className={scss.searchAreaInput}
+          autoFocus
+          onChange={props.handleSearch}
+          type="search"
+        />
+        <button className={scss.SearchAreaButton} type="submit">
+          Search
+        </button>
+      </form>
+    </div>
+  );
+};

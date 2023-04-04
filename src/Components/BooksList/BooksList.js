@@ -1,48 +1,50 @@
-import React from "react";
-import css from "./BooksList.module.css";
+import React, { useState } from "react";
+import scss from "./BooksList.module.scss";
 import { BookCard } from "../BookCard/BookCard";
 
-export class BooksList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { pageCount: 0, booksCount: 0 };
-  }
+export const BooksList = (props) => {
+  const [pageCount, SetPageCount] = useState(0);
+  const [booksCount, SetBookCount] = useState(0);
 
-  handleCount = () => {
-    this.setState({
-      pageCount: this.state.pageCount,
-      booksCount: this.state.booksCount + 1,
-    });
+  const handleCountIncrement = (booksPages) => {
+    SetPageCount(pageCount + booksPages);
+    SetBookCount(booksCount + 1);
   };
 
-  render() {
-    return (
-      <div className={css.booksList}>
-        <div className={css.headerBooksCounterContainer}>
-          <div className={css.booksCounter}>
-            Books counter: {0 && this.state.pageCount}
-          </div>
-          <div className={css.booksPagesCounter}>
-            Pages counter: {0 && this.state.booksCount}
-          </div>
+  const handleCountDecrement = (booksPages) => {
+    SetPageCount(pageCount - booksPages);
+    SetBookCount(booksCount - 1);
+  };
+
+  return (
+    <>
+      <div className={scss.BooksCounterContainer}>
+        <div className={scss.booksCounter}>
+          Books counter: {booksCount < 0 ? 0 : booksCount}
         </div>
-        {this.props.books.map((book) => {
+        <div className={scss.booksPagesCounter}>
+          Pages counter: {pageCount < 0 ? 0 : pageCount}
+        </div>
+      </div>
+      <div className={scss.booksList}>
+        {props.books.map((book) => {
           return (
             <BookCard
-              ket={book.id}
-              bookHref={book.volumeInfo.previewLink}
+              key={book?.id}
+              bookHref={book.volumeInfo?.previewLink}
               bookImg={book.volumeInfo.imageLinks?.thumbnail}
-              bookTitle={book.volumeInfo.title}
-              bookAuthor={book.volumeInfo.authors}
-              bookPageCount={book.volumeInfo.pageCount}
-              bookPublished={book.volumeInfo.publishedDate}
-              handleCount={this.handleCount}
-              booksCount={this.state.booksCount}
-              pageCount={this.state.booksCount}
+              bookTitle={book.volumeInfo?.title}
+              bookAuthor={book.volumeInfo?.authors}
+              bookPageCount={book.volumeInfo?.pageCount}
+              bookPublished={book.volumeInfo?.publishedDate}
+              handleCountIncrement={handleCountIncrement}
+              handleCountDecrement={handleCountDecrement}
+              pageCount={pageCount}
+              booksCount={booksCount}
             />
           );
         })}
       </div>
-    );
-  }
-}
+    </>
+  );
+};

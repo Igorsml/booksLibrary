@@ -13,10 +13,16 @@
   margin-right: 1em;
   font-size: 1em;
   outline: none;
-}
 
-.searchAreaInput:focus {
-  filter: drop-shadow(0 0 0.40rem rgb(20, 136, 230));
+  &:focus {
+    filter: drop-shadow(0 0 0.40rem rgb(20, 136, 230));
+  }
+
+  &::before {
+    width: 1em;
+    background-image: url("../assets/icons/Icons_search.gif");
+    padding-left:30px;
+  }
 }
 
 .SearchAreaButton {
@@ -34,14 +40,14 @@
   cursor: pointer;
   opacity: 1;
   transition: opacity .2s linear;
-}
 
-.SearchAreaButton:hover {
-  opacity: .8;
-  transition: opacity .2s linear;
-}
+  &:hover {
+    opacity: .8;
+    transition: opacity .2s linear;
+  }
 
-.SearchAreaButton:active {
-  opacity: 1;
-  transition: opacity .2s linear;
+  &:active {
+    opacity: 1;
+    transition: opacity .2s linear;
+  }
 }
