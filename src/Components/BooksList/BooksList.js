@@ -28,21 +28,25 @@ export const BooksList = (props) => {
       </div>
       <div className={scss.booksList}>
         {props.books.map((book) => {
-          return (
-            <BookCard
-              key={book?.id}
-              bookHref={book.volumeInfo?.previewLink}
-              bookImg={book.volumeInfo.imageLinks?.thumbnail}
-              bookTitle={book.volumeInfo?.title}
-              bookAuthor={book.volumeInfo?.authors}
-              bookPageCount={book.volumeInfo?.pageCount}
-              bookPublished={book.volumeInfo?.publishedDate}
-              handleCountIncrement={handleCountIncrement}
-              handleCountDecrement={handleCountDecrement}
-              pageCount={pageCount}
-              booksCount={booksCount}
-            />
-          );
+          try {
+            return (
+              <BookCard
+                key={book?.id}
+                bookHref={book.volumeInfo?.previewLink}
+                bookImg={book.volumeInfo.imageLinks.thumbnail}
+                bookTitle={book.volumeInfo?.title}
+                bookAuthor={book.volumeInfo?.authors}
+                bookPageCount={book.volumeInfo?.pageCount}
+                bookPublished={book.volumeInfo?.publishedDate}
+                handleCountIncrement={handleCountIncrement}
+                handleCountDecrement={handleCountDecrement}
+                pageCount={pageCount}
+                booksCount={booksCount}
+              />
+            );
+          } catch (err) {
+            console.log(err);
+          }
         })}
       </div>
     </>

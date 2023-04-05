@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { SearchArea } from "../SearchArea/SearchArea";
 import { BooksList } from "../BooksList/BooksList";
 import request from "superagent";
+import debounce from "lodash.debounce";
 
 export function Books() {
   const [books, SetBooks] = useState([]);
   const [searchField, SetSearchField] = useState("");
-
   const pathURL = "https://www.googleapis.com/books/v1/volumes";
 
   const searchBook = (e) => {
@@ -19,7 +19,10 @@ export function Books() {
       });
   };
 
-  const handleSearch = (e) => SetSearchField(e.target.value);
+  const handleSearch = (e) => {
+    SetSearchField(e.target.value);
+  };
+
   return (
     <div>
       <SearchArea searchBook={searchBook} handleSearch={handleSearch} />

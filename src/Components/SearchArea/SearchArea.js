@@ -10,6 +10,7 @@ export const SearchArea = (props) => {
           autoFocus
           onChange={props.handleSearch}
           type="search"
+          autocomplete="on"
         />
         <button className={scss.SearchAreaButton} type="submit">
           Search
