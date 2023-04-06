@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ListItems = (props) => {
+export const SearchBooksList = (props) => {
   return (
     <ul className="dropdown-menu show">
       {props.books.map((item, index) => (
