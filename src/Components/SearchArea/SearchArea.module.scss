@@ -51,3 +51,13 @@
     transition: opacity .2s linear;
   }
 }
+
+.debounceSearchResult {
+  width: 50vw;
+  height: 5vh;
+  background-color: #fff;
+  border-radius: .3em;
+  padding: 1em;
+  font-size: 1em;
+  outline: none;
+}

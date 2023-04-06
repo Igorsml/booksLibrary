@@ -8,13 +8,22 @@ export const SearchArea = (props) => {
         <input
           className={scss.searchAreaInput}
           autoFocus
-          onChange={props.handleSearch}
+          onChange={props.debouncedResults}
           type="search"
-          autocomplete="on"
+          placeholder="search"
+          autoComplete="on"
         />
         <button className={scss.SearchAreaButton} type="submit">
           Search
         </button>
+        {props?.isLoading && (
+          <span className="position-absolute  m-1">
+            <div
+              className="spinner-border spinner-border-small"
+              role="status"
+            />
+          </span>
+        )}
       </form>
     </div>
   );
