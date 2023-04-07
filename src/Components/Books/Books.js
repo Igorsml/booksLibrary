@@ -11,7 +11,7 @@ const AutoCompleteBooks = () => {
     <div>
       <SearchArea setBooks={setBooks} setBooksTitles={setBooksTitles} />
       <BooksList books={books} />
-      <SearchBooksList books={booksTitles} />
+      {booksTitles.length && <SearchBooksList books={booksTitles} />}
     </div>
   );
 };

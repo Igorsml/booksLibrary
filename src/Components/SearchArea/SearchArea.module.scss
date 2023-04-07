@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 2em;
+  position: relative;
 }
 
 .searchAreaInput {
@@ -52,12 +53,15 @@
   }
 }
 
-.debounceSearchResult {
+.dropdownWrapper {
+  position: absolute;
   width: 50vw;
-  height: 5vh;
+  height: fit-content;
+  left: 15%;
+  top: 19%;
   background-color: #fff;
   border-radius: .3em;
-  padding: 1em;
+  padding: 2em;
   font-size: 1em;
   outline: none;
 }

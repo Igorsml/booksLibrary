@@ -3,7 +3,7 @@ import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
-const DEBOUNCE = 2000;
+const DEBOUNCE = 1000;
 
 export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
@@ -27,6 +27,7 @@ export const SearchArea = (props) => {
       .query({ q: e.target[0].value })
       .then((data) => {
         setBooks([...data.body.items]);
+        setBooksTitles([]);
       });
   };
 
@@ -59,7 +60,7 @@ export const SearchArea = (props) => {
           Search
         </button>
         {props?.isLoading && (
-          <span className="position-absolute  m-1">
+          <span>
             <div
               className="spinner-border spinner-border-small"
               role="status"
