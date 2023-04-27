@@ -55,6 +55,7 @@ export const SearchArea = (props) => {
           type="search"
           placeholder="search"
           autoComplete="on"
+          onFocus={() => setBooksTitles([])}
         />
         <button className={scss.SearchAreaButton} type="submit">
           Search

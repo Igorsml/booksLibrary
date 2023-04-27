@@ -1,11 +1,10 @@
 $bookListMainColor: #9fadbc;
 
 .booksList {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100vw;
-  flex-wrap: wrap;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15%, 5fr));
+  gap: 1em;
+  align-items: start;
   margin-top: 2em;
   color: $bookListMainColor
 }

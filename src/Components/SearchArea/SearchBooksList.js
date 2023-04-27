@@ -1,6 +1,5 @@
 import React from "react";
 import scss from "./SearchArea.module.scss";
-import cn from "classnames";
 
 export const SearchBooksList = (props) => {
   return (
