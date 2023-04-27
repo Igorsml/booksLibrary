@@ -55,13 +55,37 @@
 
 .dropdownWrapper {
   position: absolute;
-  width: 50vw;
   height: fit-content;
-  left: 15%;
+  left: 14%;
   top: 19%;
   background-color: #fff;
   border-radius: .3em;
-  padding: 2em;
-  font-size: 1em;
   outline: none;
+  z-index: 1000;
+  width: calc(80% - 8px);
+  min-width: 70vw;
+  max-width: none;
+  max-height: calc(90vh - 140px);
+  padding: 0;
+  overflow-y: scroll;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.15);
+  
 }
+
+.dropdownWrapper ul {
+  display: grid;
+  gap: 1em;
+  padding: 0;
+  list-style-type: none;
+}
+
+.dropdownWrapper ul a {
+  display: block;
+  width: 100%;
+}
+
+.dropdownWrapper ul img {
+  width: 10em;
+  max-width: 10%;
+}
+

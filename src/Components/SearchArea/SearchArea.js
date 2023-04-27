@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
+import { BookCard } from "./../BookCard/BookCard";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 const DEBOUNCE = 1000;
 
 export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
+  const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const searchList = false;
 
   const searchBook = (e) => {
     request
@@ -16,7 +19,22 @@ export const SearchArea = (props) => {
       .then((data) => {
         const { totalItems, items } = data.body;
         setIsLoading(false);
-        setBooksTitles(totalItems ? items.map((i) => i.volumeInfo?.title) : []);
+        setBooksTitles(
+          totalItems
+            ? items.map((book) => (
+                <BookCard
+                  key={book?.id}
+                  bookHref={book.volumeInfo?.previewLink}
+                  bookImg={book.volumeInfo.imageLinks?.thumbnail}
+                  bookTitle={book.volumeInfo?.title}
+                  bookAuthor={book.volumeInfo?.authors}
+                  bookPageCount={book.volumeInfo?.pageCount}
+                  bookPublished={book.volumeInfo?.publishedDate}
+                  searchList={searchList}
+                />
+              ))
+            : []
+        );
       });
   };
 
@@ -45,6 +63,19 @@ export const SearchArea = (props) => {
 
   const debouncedSearch = debounce(searchBook, DEBOUNCE);
 
+  const handleChange = (event) => {
+    const deleteSymbols = "/[^a-zа-я0-9]+/g";
+    const result = event.target.value.replace(deleteSymbols, "");
+
+    if (event.target.value.match(/[^a-zа-я0-9]/gi, "")) {
+      alert(
+        `Ooops, you are typed ${event.target.value}. Please, only letters & numbers`
+      );
+    } else {
+      setMessage(result);
+    }
+  };
+
   return (
     <div className={scss.searchArea}>
       <form onSubmit={fetchBooks} action="">
@@ -55,6 +86,8 @@ export const SearchArea = (props) => {
           type="search"
           placeholder="search"
           autoComplete="on"
+          value={message}
+          onChange={handleChange}
           onFocus={() => setBooksTitles([])}
         />
         <button className={scss.SearchAreaButton} type="submit">
