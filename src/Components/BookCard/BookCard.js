@@ -19,18 +19,15 @@ export const BookCard = (props) => {
             )}
             {props.bookPublished && <p>Published: {props.bookPublished}</p>}
             {props.bookPageCount && <p>Pages: {props.bookPageCount}</p>}
-
-            {props.searchList && (
-              <Counter
-                handleCountIncrement={props.handleCountIncrement}
-                handleCountDecrement={props.handleCountDecrement}
-                bookPageCount={props.bookPageCount}
-                pageCount={props.pageCount}
-                booksCount={props.booksCount}
-              />
-            )}
           </div>
         </a>
+        <Counter
+          handleCountIncrement={props.handleCountIncrement}
+          handleCountDecrement={props.handleCountDecrement}
+          bookPageCount={props.bookPageCount}
+          pageCount={props.pageCount}
+          booksCount={props.booksCount}
+        />
       </div>
     );
   } catch (err) {

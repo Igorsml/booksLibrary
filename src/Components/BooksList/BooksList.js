@@ -20,10 +20,10 @@ export const BooksList = (props) => {
     <>
       <div className={scss.BooksCounterContainer}>
         <div className={scss.booksCounter}>
-          Books counter: {booksCount < 0 ? 0 : booksCount}
+          Books counter: {booksCount < 0 ? SetBookCount(0) : booksCount}
         </div>
         <div className={scss.booksPagesCounter}>
-          Pages counter: {pageCount < 0 ? 0 : pageCount}
+          Pages counter: {pageCount < 0 ? SetPageCount(0) : pageCount}
         </div>
       </div>
       <div className={scss.booksList}>
@@ -33,7 +33,7 @@ export const BooksList = (props) => {
               <BookCard
                 key={book?.id}
                 bookHref={book.volumeInfo?.previewLink}
-                bookImg={book.volumeInfo.imageLinks.thumbnail}
+                bookImg={book.volumeInfo.imageLinks?.thumbnail}
                 bookTitle={book.volumeInfo?.title}
                 bookAuthor={book.volumeInfo?.authors}
                 bookPageCount={book.volumeInfo?.pageCount}
