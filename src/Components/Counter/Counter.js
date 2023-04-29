@@ -7,7 +7,8 @@ export const Counter = (props) => {
       <button
         className={scss.btn}
         onClick={() =>
-          props.bookPageCount && props.handleCountIncrement(props.bookPageCount)
+          props?.bookPageCount &&
+          props?.handleCountIncrement(props.bookPageCount)
         }
       >
         ➕
@@ -15,7 +16,8 @@ export const Counter = (props) => {
       <button
         className={scss.btn}
         onClick={() =>
-          props.bookPageCount && props.handleCountDecrement(props.bookPageCount)
+          props?.bookPageCount &&
+          props?.handleCountDecrement(props.bookPageCount)
         }
       >
         ➖

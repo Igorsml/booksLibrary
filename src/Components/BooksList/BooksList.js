@@ -15,6 +15,7 @@ export const BooksList = (props) => {
     SetPageCount(pageCount - booksPages);
     SetBookCount(booksCount - 1);
   };
+  const isSearch = true;
 
   return (
     <>
@@ -42,6 +43,7 @@ export const BooksList = (props) => {
                 handleCountDecrement={handleCountDecrement}
                 pageCount={pageCount}
                 booksCount={booksCount}
+                isSearch={isSearch}
               />
             );
           } catch (err) {

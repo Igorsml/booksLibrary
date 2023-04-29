@@ -10,6 +10,7 @@ export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const isSearch = false;
 
   const searchBook = (e) => {
     request
@@ -29,6 +30,7 @@ export const SearchArea = (props) => {
                   bookAuthor={book.volumeInfo?.authors}
                   bookPageCount={book.volumeInfo?.pageCount}
                   bookPublished={book.volumeInfo?.publishedDate}
+                  isSearch={isSearch}
                 />
               ))
             : []
@@ -42,7 +44,6 @@ export const SearchArea = (props) => {
       .get(`${API_URL}`)
       .query({ q: e.target[0].value })
       .then((data) => {
-        console.log(data.body);
         setBooks([...data.body.items]);
         setBooksTitles([]);
       });
