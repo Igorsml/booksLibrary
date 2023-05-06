@@ -19,38 +19,40 @@ export const BooksList = (props) => {
 
   return (
     <>
-      <div className={scss.BooksCounterContainer}>
-        <div className={scss.booksCounter}>
-          Books counter: {booksCount < 0 ? SetBookCount(0) : booksCount}
+      <div className={scss.booksWrap}>
+        <div className={scss.BooksCounterContainer}>
+          <div className={scss.booksCounter}>
+            Books counter: {booksCount < 0 ? SetBookCount(0) : booksCount}
+          </div>
+          <div className={scss.booksPagesCounter}>
+            Pages counter: {pageCount < 0 ? SetPageCount(0) : pageCount}
+          </div>
         </div>
-        <div className={scss.booksPagesCounter}>
-          Pages counter: {pageCount < 0 ? SetPageCount(0) : pageCount}
-        </div>
-      </div>
 
-      <div className={scss.booksList}>
-        {props.books.map((book) => {
-          try {
-            return (
-              <BookCard
-                key={book?.id}
-                bookHref={book.volumeInfo?.previewLink}
-                bookImg={book.volumeInfo.imageLinks?.thumbnail}
-                bookTitle={book.volumeInfo?.title}
-                bookAuthor={book.volumeInfo?.authors}
-                bookPageCount={book.volumeInfo?.pageCount}
-                bookPublished={book.volumeInfo?.publishedDate}
-                handleCountIncrement={handleCountIncrement}
-                handleCountDecrement={handleCountDecrement}
-                pageCount={pageCount}
-                booksCount={booksCount}
-                isSearch={isSearch}
-              />
-            );
-          } catch (err) {
-            console.log(err);
-          }
-        })}
+        <div className={scss.booksList}>
+          {props.books.map((book) => {
+            try {
+              return (
+                <BookCard
+                  key={book?.id}
+                  bookHref={book.volumeInfo?.previewLink}
+                  bookImg={book.volumeInfo.imageLinks?.thumbnail}
+                  bookTitle={book.volumeInfo?.title}
+                  bookAuthor={book.volumeInfo?.authors}
+                  bookPageCount={book.volumeInfo?.pageCount}
+                  bookPublished={book.volumeInfo?.publishedDate}
+                  handleCountIncrement={handleCountIncrement}
+                  handleCountDecrement={handleCountDecrement}
+                  pageCount={pageCount}
+                  booksCount={booksCount}
+                  isSearch={isSearch}
+                />
+              );
+            } catch (err) {
+              console.log(err);
+            }
+          })}
+        </div>
       </div>
     </>
   );

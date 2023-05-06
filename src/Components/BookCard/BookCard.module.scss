@@ -1,6 +1,6 @@
 .bookCard {
   height: 100%;
-  width: 15%;
+  min-height: 500px;
   border: 1px solid #ccc;
   border-radius: .5em;
   padding: 1em;
@@ -8,11 +8,36 @@
   box-shadow: 4px 4px 8px 0px rgba(83, 172, 240, 0.2);
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
+  .bookCard {
+    width: calc(99% - 1em);
+  } 
+}
+
+@media only screen and (min-width: 600px) {
+  .bookCard {
+    width: calc(99% - 1em);
+  } 
+}
+
+@media only screen and (min-width: 768px) {
   .bookCard {
     width: calc(80% - 1em);
   } 
 }
+
+@media only screen and (min-width: 992px) {
+  .bookCard {
+    width: calc(33% - 1em);
+  } 
+}
+
+@media only screen and (min-width: 1200px){
+  .bookCard {
+    width: calc(14% - 1em);
+  } 
+}
+
 
 
 .bookCard h2, h3 {
