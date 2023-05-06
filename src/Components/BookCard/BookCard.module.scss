@@ -1,11 +1,19 @@
 .bookCard {
-  min-height: 100%;
+  height: 100%;
+  width: 15%;
   border: 1px solid #ccc;
   border-radius: .5em;
   padding: 1em;
   font-size: 1em;
   box-shadow: 4px 4px 8px 0px rgba(83, 172, 240, 0.2);
 }
+
+@media screen and (max-width: 768px) {
+  .bookCard {
+    width: calc(80% - 1em);
+  } 
+}
+
 
 .bookCard h2, h3 {
   font-size: 1em;

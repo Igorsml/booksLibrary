@@ -1,9 +1,9 @@
 $bookListMainColor: #9fadbc;
 
 .booksList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15%, 5fr));
+  display: flex;
   gap: 1em;
+  flex-wrap: wrap;
   align-items: start;
   margin-top: 2em;
   color: $bookListMainColor

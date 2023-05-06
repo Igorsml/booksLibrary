@@ -27,6 +27,7 @@ export const BooksList = (props) => {
           Pages counter: {pageCount < 0 ? SetPageCount(0) : pageCount}
         </div>
       </div>
+
       <div className={scss.booksList}>
         {props.books.map((book) => {
           try {

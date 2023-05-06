@@ -3,7 +3,7 @@ import { SearchArea } from "../SearchArea/SearchArea";
 import { BooksList } from "../BooksList/BooksList";
 import { SearchBooksList } from "../SearchArea/SearchBooksList";
 
-const AutoCompleteBooks = () => {
+export const Books = (props) => {
   const [books, setBooks] = useState([]);
   const [booksTitles, setBooksTitles] = useState([]);
 
@@ -15,5 +15,3 @@ const AutoCompleteBooks = () => {
     </div>
   );
 };
-
-export default AutoCompleteBooks;

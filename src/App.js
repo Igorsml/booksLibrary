@@ -1,12 +1,12 @@
 import "./App.css";
 import { Header } from "./Components/Header/Header";
-import AutoCompleteBooks from "./Components/Books/Books";
+import { Books } from "./Components/Books/Books";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <AutoCompleteBooks />
+      <Books />
     </div>
   );
 }

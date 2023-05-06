@@ -3,6 +3,7 @@ import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 import { BookCard } from "./../BookCard/BookCard";
+import { Books } from "../Books/Books";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 const DEBOUNCE = 1000;
 
@@ -11,6 +12,7 @@ export const SearchArea = (props) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const isSearch = false;
+  let isSearched = true;
 
   const searchBook = (e) => {
     request
@@ -46,14 +48,15 @@ export const SearchArea = (props) => {
       .then((data) => {
         setBooks([...data.body.items]);
         setBooksTitles([]);
+        isSearched = false;
       });
   };
 
   const onSearch = (v) => {
     const search = debouncedSearch;
     if (!v) {
-      debouncedSearch.cancel();
       setBooksTitles([]);
+      debouncedSearch.cancel();
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -64,44 +67,47 @@ export const SearchArea = (props) => {
   const debouncedSearch = debounce(searchBook, DEBOUNCE);
 
   const handleChange = (event) => {
-    const deleteSymbols = "/[^a-zа-я0-9]+/g";
-    const result = event.target.value.replace(deleteSymbols, "");
+    const result = event.target.value
+      .toLowerCase()
+      .replace(/[^a-zа-я0-9 ]+/g, "");
 
-    if (event.target.value.match(/[^a-zа-я0-9]/gi, "")) {
-      alert(
-        `Ooops, you are typed ${event.target.value}. Please, only letters & numbers`
-      );
-    } else {
-      setMessage(result);
-    }
+    setMessage(result);
   };
 
   return (
-    <div className={scss.searchArea}>
-      <form onSubmit={fetchBooks} action="">
-        <input
-          className={scss.searchAreaInput}
-          autoFocus
-          onInput={onSearch}
-          type="search"
-          placeholder="search"
-          autoComplete="on"
-          value={message}
-          onChange={handleChange}
-          onFocus={() => setBooksTitles([])}
-        />
-        <button className={scss.SearchAreaButton} type="submit">
-          Search
-        </button>
-        {props?.isLoading && (
-          <span>
-            <div
-              className="spinner-border spinner-border-small"
-              role="status"
-            />
-          </span>
-        )}
-      </form>
-    </div>
+    <>
+      <div className={scss.searchArea}>
+        <form onSubmit={fetchBooks} action="">
+          <input
+            className={scss.searchAreaInput}
+            autoFocus
+            onInput={onSearch}
+            type="search"
+            placeholder="search"
+            autoComplete="on"
+            value={message}
+            onChange={handleChange}
+            onFocus={() => setBooksTitles([])}
+          />
+          <button className={scss.SearchAreaButton} type="submit">
+            Search
+          </button>
+          {props?.isLoading && (
+            <span>
+              <div
+                className="spinner-border spinner-border-small"
+                role="status"
+              />
+            </span>
+          )}
+        </form>
+      </div>
+      {isSearched && (
+        <div className={scss.BooksCounterContainer}>
+          Search result on «{message}»
+        </div>
+      )}
+      ;
+    </>
   );
 };
