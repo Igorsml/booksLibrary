@@ -21,7 +21,7 @@ export const BookCard = (props) => {
             {props.bookPageCount && <p>Pages: {props.bookPageCount}</p>}
           </div>
         </a>
-        {props.isSearch && (
+        {props.bookPageCount && (
           <Counter
             handleCountIncrement={props?.handleCountIncrement}
             handleCountDecrement={props?.handleCountDecrement}

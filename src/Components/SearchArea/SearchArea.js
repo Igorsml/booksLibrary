@@ -3,16 +3,15 @@ import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 import { BookCard } from "./../BookCard/BookCard";
-import { Books } from "../Books/Books";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
-const DEBOUNCE = 1000;
+const DEBOUNCE = 500;
 
 export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
   const [message, setMessage] = useState("");
+  const [searchValueResult, setSearchValueResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const isSearch = false;
-  let isSearched = true;
 
   const searchBook = (e) => {
     request
@@ -47,15 +46,15 @@ export const SearchArea = (props) => {
       .query({ q: e.target[0].value })
       .then((data) => {
         setBooks([...data.body.items]);
-        setBooksTitles([]);
-        isSearched = false;
+        setBooksTitles(false);
+        setSearchValueResult(e.target[0].value);
       });
   };
 
   const onSearch = (v) => {
     const search = debouncedSearch;
     if (!v) {
-      setBooksTitles([]);
+      setBooksTitles(false);
       debouncedSearch.cancel();
       setIsLoading(false);
     } else {
@@ -87,7 +86,7 @@ export const SearchArea = (props) => {
             autoComplete="on"
             value={message}
             onChange={handleChange}
-            onFocus={() => setBooksTitles([])}
+            onFocus={() => setBooksTitles(false)}
           />
           <button className={scss.SearchAreaButton} type="submit">
             Search
@@ -102,12 +101,11 @@ export const SearchArea = (props) => {
           )}
         </form>
       </div>
-      {isSearched && (
-        <div className={scss.BooksCounterContainer}>
-          Search result on «{message}»
+      {searchValueResult && (
+        <div className={scss.searchValueResult}>
+          Search result on «<span>{searchValueResult}</span>»
         </div>
       )}
-      ;
     </>
   );
 };

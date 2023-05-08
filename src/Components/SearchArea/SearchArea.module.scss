@@ -73,7 +73,9 @@
 }
 
 .dropdownWrapper ul {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1em;
   padding: 0;
   list-style-type: none;
@@ -86,6 +88,16 @@
 
 .dropdownWrapper ul img {
   width: 10em;
-  max-width: 10%;
+  max-width: 100%;
 }
 
+.searchValueResult {
+  font-size: 1.3em;
+  text-align: center;
+  margin-top: 2%;
+  color: #315b92;
+}
+
+.searchValueResult span {
+  color: #fff;
+}

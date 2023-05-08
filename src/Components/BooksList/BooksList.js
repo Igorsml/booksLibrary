@@ -49,7 +49,7 @@ export const BooksList = (props) => {
                 />
               );
             } catch (err) {
-              console.log(err);
+              console.error(err);
             }
           })}
         </div>

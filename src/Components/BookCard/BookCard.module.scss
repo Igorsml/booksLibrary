@@ -8,27 +8,33 @@
   box-shadow: 4px 4px 8px 0px rgba(83, 172, 240, 0.2);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .bookCard {
     width: calc(99% - 1em);
+  } 
+}
+
+@media only screen and (min-width: 400px) {
+  .bookCard {
+    width: calc(43% - 1em);
   } 
 }
 
 @media only screen and (min-width: 600px) {
   .bookCard {
-    width: calc(99% - 1em);
+    width: calc(45% - 1em);
   } 
 }
 
 @media only screen and (min-width: 768px) {
   .bookCard {
-    width: calc(80% - 1em);
+    width: calc(29% - 1em);
   } 
 }
 
 @media only screen and (min-width: 992px) {
   .bookCard {
-    width: calc(33% - 1em);
+    width: calc(30% - 1em);
   } 
 }
 
