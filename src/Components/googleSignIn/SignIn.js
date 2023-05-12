@@ -6,7 +6,7 @@ import App from "../../App.js";
 export default function SignIn() {
   const [value, setValue] = useState("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     signInWithPopup(auth, provider).then((data) => {
       setValue(data.user.email);
       localStorage.setItem("email", data.user.email);
@@ -15,7 +15,7 @@ export default function SignIn() {
 
   useEffect(() => {
     setValue(localStorage.getItem("email"));
-  });
+  }, []);
 
   return (
     <div>

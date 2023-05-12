@@ -1,9 +1,11 @@
-import React from "react";
-import scss from "./BookCard.module.scss";
-import { Counter } from "../Counter/Counter";
+import React, { useParams } from "react";
+import scss from "./ProductBookCard.module.scss";
+import { Counter } from "../../Components/Counter/Counter";
 import { Link } from "react-router-dom";
 
-export const BookCard = (props) => {
+export const ProductBookCard = (props) => {
+  const { id } = useParams();
+
   try {
     return (
       <div className={scss.bookCard}>
