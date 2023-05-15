@@ -1,40 +1,59 @@
-import React, { useParams } from "react";
+import React, { useState, useEffect } from "react";
 import scss from "./ProductBookCard.module.scss";
 import { Counter } from "../../Components/Counter/Counter";
-import { Link } from "react-router-dom";
+import BooksList from "../../Components/BooksList/BooksList";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import request from "superagent";
+const API_URL = "https://www.googleapis.com/books/v1/volumes";
 
-export const ProductBookCard = (props) => {
+export const ProductBookCard = () => {
+  const [book, setBooks] = useState([]);
+  const navigate = useNavigate();
   const { id } = useParams();
+
+  const goBack = () => navigate(-1);
+
+  useEffect(() => {
+    fetch(`${API_URL}/${id}`)
+      .then((response) => response.json())
+      .then((data) => setBooks(data));
+  }, [id]);
 
   try {
     return (
-      <div className={scss.bookCard}>
-        <Link to={props.bookHref} target="_blank" rel="noreferrer">
-          <img className={scss.bookCardImg} src={props.bookImg} alt="img" />
-
+      <>
+        <button onClick={goBack}>Go Back</button>
+        <h1>{book?.volumeInfo?.title}</h1>
+        <Link to={book?.bookHref} target="_blank" rel="noreferrer">
+          <img
+            className={scss.bookCardImg}
+            src={book.volumeInfo.imageLinks?.medium}
+            alt="img"
+          />
           <div className={scss.description}>
-            <h2>{props.bookTitle}</h2>
-
-            {props.bookAuthor ? (
-              <h3>Author: {props.bookAuthor}</h3>
+            {book?.volumeInfo?.authors.join("") ? (
+              <h3>Author: {book?.volumeInfo?.authors.join("")}</h3>
             ) : (
               "Author: Unknown"
             )}
-            {props.bookPublished && <p>Published: {props.bookPublished}</p>}
-            {props.bookPageCount && <p>Pages: {props.bookPageCount}</p>}
+            {book?.volumeInfo?.publishedDate && (
+              <p>Published: {book?.volumeInfo?.publishedDate}</p>
+            )}
+            {book?.volumeInfo?.pageCount && (
+              <p>Pages: {book?.volumeInfo?.pageCount}</p>
+            )}
           </div>
         </Link>
-        {props.bookPageCount && (
-          <Counter
-            handleCountIncrement={props?.handleCountIncrement}
-            handleCountDecrement={props?.handleCountDecrement}
-            bookPageCount={props.bookPageCount}
-            pageCount={props.pageCount}
-            booksCount={props.booksCount}
-            isSearch={props.isSearch}
-          />
+        {book.accessInfo?.epub?.downloadLink && (
+          <Link
+            to={book.accessInfo?.pdf?.downloadLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download
+          </Link>
         )}
-      </div>
+      </>
     );
   } catch (err) {
     console.error(err);

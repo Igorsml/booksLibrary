@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
-import { BookCard } from "./../BookCard/BookCard";
+import { BookCard } from "../BookCard/BookCard";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
+const API_KEY = "AIzaSyCGdBrakyzRLdW3kBWnW3aibLiEk7rsO-s";
+const maxResults = 3;
 const DEBOUNCE = 500;
 
 export const SearchArea = (props) => {
@@ -42,7 +44,7 @@ export const SearchArea = (props) => {
   const fetchBooks = (e) => {
     e.preventDefault();
     request
-      .get(`${API_URL}`)
+      .get(`${API_URL}?=book&key=${API_KEY}&maxResults=${maxResults}`)
       .query({ q: e.target[0].value })
       .then((data) => {
         setBooks([...data.body.items]);
