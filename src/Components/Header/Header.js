@@ -1,8 +1,8 @@
 import React from "react";
 import scss from "./Header.module.scss";
-import "../Layout/Layout.module.scss";
+import "../../Pages/Home/Home.module.scss";
 import { ReactComponent as SvgLogo } from "../assets/icons/Logo.svg";
-import SignIn from "../googleSignIn/SignIn.js";
+import { SignIn } from "../googleSignIn/SignIn.js";
 import { NavLink } from "react-router-dom";
 
 export const Header = () => {
@@ -19,8 +19,7 @@ export const Header = () => {
       <h1 className={scss.headerTitle}>Books Library</h1>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/my-books">My books</NavLink>
-      {/* <SignIn /> */}
-      {/* && <button onClick={logout}></button> */}
+      <NavLink to="/signin">Sign in</NavLink>
     </header>
   );
 };

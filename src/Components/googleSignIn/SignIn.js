@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { auth, provider } from "./config";
 import { signInWithPopup } from "firebase/auth";
-import App from "../../App.js";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export const SignIn = () => {
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
 
-  const handleClick = async () => {
+  const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
+      setValue(data.user);
+      localStorage.setItem("email", data.user);
     });
+  };
+
+  console.log(value);
+
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
   };
 
   useEffect(() => {
@@ -20,10 +28,17 @@ export default function SignIn() {
   return (
     <div>
       {value ? (
-        (document.location.href = "/")
+        <button onClick={logout}>Logout</button>
       ) : (
         <button onClick={handleClick}>Sign in with Google</button>
       )}
+
+      {value && (
+        <div>
+          <p>Hello, {value?.displayName}</p>
+          <img src={value?.photoURL} alt="user avatar" />
+        </div>
+      )}
     </div>
   );
-}
+};

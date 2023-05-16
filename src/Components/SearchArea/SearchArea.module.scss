@@ -14,6 +14,7 @@
   margin-right: 1em;
   font-size: 1em;
   outline: none;
+  caret-color: #6faeff;
 
   &:focus {
     filter: drop-shadow(0 0 0.40rem rgb(20, 136, 230));
@@ -22,7 +23,7 @@
   &::before {
     width: 1em;
     background-image: url("../assets/icons/Icons_search.gif");
-    padding-left:30px;
+    padding-left: 30px;
   }
 }
 
