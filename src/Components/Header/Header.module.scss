@@ -23,3 +23,9 @@
 .headerLogo:hover {
   transform: rotate(-15deg) translateX(-5px);;
 }
+
+.headerUserAvatar {
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+}
