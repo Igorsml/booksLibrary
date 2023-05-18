@@ -9,7 +9,7 @@
 .searchAreaInput {
   width: 50vw;
   height: 5vh;
-  border-radius: .3em;
+  border-radius: 0.3em;
   padding: 1em;
   margin-right: 1em;
   font-size: 1em;
@@ -17,7 +17,7 @@
   caret-color: #6faeff;
 
   &:focus {
-    filter: drop-shadow(0 0 0.40rem rgb(20, 136, 230));
+    filter: drop-shadow(0 0 0.4rem rgb(20, 136, 230));
   }
 
   &::before {
@@ -27,30 +27,43 @@
   }
 }
 
+.preloader {
+  position: absolute;
+  right: 40%;
+  top: 12%;
+  height: 80%;
+}
+
 .SearchAreaButton {
   font-weight: 600;
-  font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   background-color: #315b92;
   color: #fff;
   width: 20vw;
   min-height: 5vh;
   height: 100%;
-  border-radius: .3em;
+  border-radius: 0.3em;
   border: 0;
   font-size: 1em;
   padding: 0.5em 0;
   cursor: pointer;
   opacity: 1;
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
 
   &:hover {
-    opacity: .8;
-    transition: opacity .2s linear;
+    opacity: 0.8;
+    transition: opacity 0.2s linear;
   }
 
   &:active {
     opacity: 1;
-    transition: opacity .2s linear;
+    transition: opacity 0.2s linear;
+  }
+
+  &:disabled,
+  &[disabled] {
+    opacity: 0.3;
+    cursor: no-drop;
   }
 }
 
@@ -60,7 +73,7 @@
   left: 14%;
   top: 19%;
   background-color: #fff;
-  border-radius: .3em;
+  border-radius: 0.3em;
   outline: none;
   z-index: 1000;
   width: calc(80% - 8px);
@@ -69,8 +82,7 @@
   max-height: calc(90vh - 140px);
   padding: 0;
   overflow-y: scroll;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.15);
-  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 .dropdownWrapper ul {
@@ -84,7 +96,7 @@
 
 .dropdownWrapper ul a {
   display: block;
-  width: 100%;
+  width: 80%;
 }
 
 .dropdownWrapper ul img {

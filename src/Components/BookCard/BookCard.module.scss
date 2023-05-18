@@ -16,25 +16,25 @@
 
 @media only screen and (min-width: 400px) {
   .bookCard {
-    width: calc(43% - 1em);
+    width: calc(50% - 1em);
   } 
 }
 
 @media only screen and (min-width: 600px) {
   .bookCard {
-    width: calc(45% - 1em);
+    width: calc(50% - 1em);
   } 
 }
 
 @media only screen and (min-width: 768px) {
   .bookCard {
-    width: calc(29% - 1em);
+    width: calc(33% - 1em);
   } 
 }
 
 @media only screen and (min-width: 992px) {
   .bookCard {
-    width: calc(30% - 1em);
+    width: calc(33% - 1em);
   } 
 }
 
@@ -64,7 +64,7 @@
 
 .bookCardImg {
   user-select: none;
-  width: 100%;
+  width: 80%;
   border-radius: .3em;
   transform: scale(1);
 	transition: .3s ease-in-out;

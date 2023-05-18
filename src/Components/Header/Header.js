@@ -2,16 +2,21 @@ import React from "react";
 import scss from "./Header.module.scss";
 import "../../Pages/Home/Home.module.scss";
 import { ReactComponent as SvgLogo } from "../assets/icons/Logo.svg";
-import { SignIn } from "../googleSignIn/SignIn.js";
 import { UserAuth } from "../../Context/AuthContext";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { user, logOut } = UserAuth();
+  const navigate = useNavigate();
 
-  const handleSignOut = async () => {
+  const goHome = () => {
+    navigate("/");
+    navigate(0);
+  };
+
+  const handleSignOut = () => {
     try {
-      await logOut();
+      logOut();
     } catch (err) {
       console.error(err);
     }
@@ -19,9 +24,9 @@ export const Header = () => {
 
   return (
     <header className={scss.headerContainer}>
-      <NavLink to="/">
+      <Link onClick={goHome}>
         <SvgLogo className={scss.headerLogo} />
-      </NavLink>
+      </Link>
       <h1 className={scss.headerTitle}>Books Library</h1>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/my-books">My books</NavLink>
