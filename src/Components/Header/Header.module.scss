@@ -1,31 +1,50 @@
-
-
 .headerContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10vh;
   border-bottom: 1px solid #ccc;
+  font-size: calc((100vw - 30em) / (80 - 30) * (1.5 - 1) + 1em);
 }
 
 .headerTitle {
   color: #9fadbc;
 }
 
-
 .headerLogo {
   margin-right: 1em;
   cursor: pointer;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   border-bottom: 1px solid #ccc;
 }
 
 .headerLogo:hover {
-  transform: rotate(-15deg) translateX(-5px);;
+  transform: rotate(-15deg) translateX(-5px);
 }
 
 .headerUserAvatar {
   border-radius: 50%;
   width: 50%;
   height: 50%;
+}
+
+.headerLinks {
+  display: flex;
+  width: 50%;
+  margin-left: 1em;
+  justify-content: space-between;
+
+  & a {
+    color: #315b92;
+    transition: color 0.2s linear;
+
+    &.active {
+      color: red;
+      cursor: default;
+    }
+
+    &:hover {
+      color: #457abf;
+    }
+  }
 }

@@ -4,7 +4,7 @@ import React from "react";
 export const Counter = (props) => {
   return (
     <div className={scss.counterContainer}>
-      {
+      {props.booksCount < 0 || (
         <button
           className={scss.btn}
           onClick={() =>
@@ -14,16 +14,18 @@ export const Counter = (props) => {
         >
           ➕
         </button>
-      }
-      <button
-        className={scss.btn}
-        onClick={() =>
-          props?.bookPageCount &&
-          props?.handleCountDecrement(props.bookPageCount)
-        }
-      >
-        ➖
-      </button>
+      )}
+      {props.booksCount > 0 && (
+        <button
+          className={scss.btn}
+          onClick={() =>
+            props?.bookPageCount &&
+            props?.handleCountDecrement(props.bookPageCount)
+          }
+        >
+          ➖
+        </button>
+      )}
     </div>
   );
 };

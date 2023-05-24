@@ -28,22 +28,25 @@ export const Header = () => {
         <SvgLogo className={scss.headerLogo} />
       </Link>
       <h1 className={scss.headerTitle}>Books Library</h1>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/my-books">My books</NavLink>
-      {user && (
-        <Link to="/signin">
-          <img
-            className={scss.headerUserAvatar}
-            src={user?.photoURL}
-            alt="user avatar"
-          />
-        </Link>
-      )}
-      {user?.displayName ? (
-        <button onClick={handleSignOut}>Logout</button>
-      ) : (
-        <NavLink to="/signin">Login</NavLink>
-      )}
+      <div className={scss.headerLinks}>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/my-books">My books</NavLink>
+        <NavLink to="/books/f1xXAAAAcAAJ">Book card demo</NavLink>
+        {user && (
+          <Link to="/signin">
+            <img
+              className={scss.headerUserAvatar}
+              src={user?.photoURL}
+              alt="user avatar"
+            />
+          </Link>
+        )}
+        {user?.displayName ? (
+          <button onClick={handleSignOut}>Logout</button>
+        ) : (
+          <NavLink to="/signin">Login</NavLink>
+        )}
+      </div>
     </header>
   );
 };
