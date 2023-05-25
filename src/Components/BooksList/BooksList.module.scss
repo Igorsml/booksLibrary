@@ -9,10 +9,9 @@ $bookListMainColor: #9fadbc;
 .booksList {
   margin: 0 auto;
   display: flex;
-  gap: 1em;
   flex-wrap: wrap;
   margin-top: 2em;
-  color: $bookListMainColor
+  color: $bookListMainColor;
 }
 
 .BooksCounterContainer {
@@ -22,5 +21,5 @@ $bookListMainColor: #9fadbc;
 }
 
 .BooksCounterContainer {
-  color: $bookListMainColor
+  color: $bookListMainColor;
 }

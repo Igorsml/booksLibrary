@@ -1,10 +1,18 @@
+a {
+  color: #2f64a9;
+  transition: color .2s linear;
+}
+
+a:hover {
+  color: #457abf;
+}
+
 .active {
   color: red;
   cursor: default;
 }
 
 button { 
-
   appearance: none;
   backface-visibility: hidden;
   background-color: #2f80ed;
@@ -16,11 +24,9 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-  font-size: 15px;
+  font-size: calc((100vw - 100em) / (80 - 3) * (1.5 - 1) + 1em);
   font-weight: 500;
-  height: 50px;
   letter-spacing: normal;
-  line-height: 1.5;
   outline: none;
   overflow: hidden;
   padding: 14px 30px;

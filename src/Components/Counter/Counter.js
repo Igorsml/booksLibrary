@@ -4,7 +4,7 @@ import React from "react";
 export const Counter = (props) => {
   return (
     <div className={scss.counterContainer}>
-      {props.booksCount < 0 || (
+      {props.booksCount < 0 || props.booksCount === 1 || (
         <button
           className={scss.btn}
           onClick={() =>

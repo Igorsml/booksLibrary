@@ -3,7 +3,6 @@ import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 import { BookCard } from "../BookCard/BookCard";
-import OutSideClose from "./OutSideClose";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 const API_KEY = "AIzaSyCGdBrakyzRLdW3kBWnW3aibLiEk7rsO-s";
@@ -85,7 +84,7 @@ export const SearchArea = (props) => {
   }, []);
 
   useEffect(() => {
-    const handleEscapeKey = (e: KeyboardEvent) => {
+    const handleEscapeKey = (e) => {
       if (e.code === "Escape") {
         setBooksTitles(false);
       }
@@ -100,9 +99,6 @@ export const SearchArea = (props) => {
   const handleClickOutside = (e) => {
     if (!ref.current.contains(e.target) || e.key === "Escape") {
       setBooksTitles(false);
-      console.log("click outside");
-    } else {
-      console.log("click inside");
     }
   };
 

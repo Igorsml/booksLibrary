@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { auth, provider } from "./Firebase";
-import { signInWithPopup } from "firebase/auth";
+import scss from "./SignIn.module.scss";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../Context/AuthContext";
 
@@ -30,22 +29,6 @@ export const SignIn = () => {
     }
   }, [user]);
 
-  // const handleClick = () => {
-  //   signInWithPopup(auth, provider).then((data) => {
-  //     setValue(data.user);
-  //     localStorage.setItem("email", data.user);
-  //   });
-  // };
-
-  // const logout = () => {
-  //   localStorage.clear();
-  //   navigate("/");
-  // };
-
-  // useEffect(() => {
-  //   setValue(localStorage.getItem("email"));
-  // }, []);
-
   return (
     <div>
       {!user && (
@@ -53,17 +36,17 @@ export const SignIn = () => {
       )}
 
       {user && (
-        <ul>
-          <li>
-            <p>Hello, {user?.displayName}</p>
-          </li>
-          <li>
-            <img src={user?.photoURL} alt="user avatar" />
-          </li>
-          <li>
-            <button onClick={handleSignOut}>Logout</button>
-          </li>
-        </ul>
+        <div className={scss.loginContainer}>
+          <p>Hello, {user?.displayName}</p>
+          <img
+            className={scss.loginAvatar}
+            src={user?.photoURL}
+            alt="user avatar"
+          />
+          <button className={scss.logout} onClick={handleSignOut}>
+            Logout
+          </button>
+        </div>
       )}
     </div>
   );

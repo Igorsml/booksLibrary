@@ -10,17 +10,15 @@ export const BookCard = (props) => {
         <Link to={props.bookHref} target="_blank" rel="noreferrer">
           <img className={scss.bookCardImg} src={props.bookImg} alt="img" />
 
-          <div className={scss.description}>
-            <h2>{props.bookTitle}</h2>
+          <h2>{props.bookTitle}</h2>
 
-            {props.bookAuthor ? (
-              <h3>Author: {props.bookAuthor}</h3>
-            ) : (
-              "Author: Unknown"
-            )}
-            {props.bookPublished && <p>Published: {props.bookPublished}</p>}
-            {props.bookPageCount && <p>Pages: {props.bookPageCount}</p>}
-          </div>
+          {props.bookAuthor ? (
+            <h3>Author: {props.bookAuthor}</h3>
+          ) : (
+            "Author: Unknown"
+          )}
+          {props.bookPublished && <p>Published: {props.bookPublished}</p>}
+          {props.bookPageCount && <p>Pages: {props.bookPageCount}</p>}
         </Link>
         {props.bookPageCount && (
           <Counter

@@ -4,7 +4,7 @@
   justify-content: center;
   height: 10vh;
   border-bottom: 1px solid #ccc;
-  font-size: calc((100vw - 30em) / (80 - 30) * (1.5 - 1) + 1em);
+  font-size: calc((100vw - 35em) / (80 - 3) * (1.5 - 1) + 1em);
 }
 
 .headerTitle {
@@ -24,27 +24,16 @@
 
 .headerUserAvatar {
   border-radius: 50%;
-  width: 50%;
-  height: 50%;
+  width: 3em;
+  height: 3em;
 }
 
 .headerLinks {
   display: flex;
+  align-items: center;
   width: 50%;
+  color: inherit;
   margin-left: 1em;
   justify-content: space-between;
-
-  & a {
-    color: #315b92;
-    transition: color 0.2s linear;
-
-    &.active {
-      color: red;
-      cursor: default;
-    }
-
-    &:hover {
-      color: #457abf;
-    }
-  }
+  transition: color 0.2s linear;
 }
