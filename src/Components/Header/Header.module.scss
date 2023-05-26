@@ -3,12 +3,14 @@
   align-items: center;
   justify-content: center;
   height: 10vh;
+  width: 100%;
   border-bottom: 1px solid #ccc;
   font-size: calc((100vw - 35em) / (80 - 3) * (1.5 - 1) + 1em);
 }
 
 .headerTitle {
   color: #9fadbc;
+  font-size: calc((100vw - 35em) / (80 - 3) * (1.5 - 1) + 1em);
 }
 
 .headerLogo {
@@ -31,7 +33,7 @@
 .headerLinks {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 40%;
   color: inherit;
   margin-left: 1em;
   justify-content: space-between;

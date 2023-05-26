@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 3em;
+  margin: 0 3em 3em 3em;
   line-height: 1.5em;
-  font-size: calc((100vw - 30em) / (80 - 30) * (1.5 - 1) + 1em);
+  font-size: calc((100vw - 80em) / (80 - 30) * (1.5 - 1) + 1em);
 }
 
 .bookCard {
@@ -18,7 +18,7 @@
 }
 
 h1 {
-  line-height: 1.3em;
+  font-size: calc((100vw - 90em) / (80 - 30) * (1.5 - 1) + 1em);
 }
 
 .bookCard h2,
@@ -38,7 +38,7 @@ h3 {
 
 .bookCardImg {
   user-select: none;
-  width: 30%;
+  width: 10%;
   border-radius: 0.3em;
   transform: scale(1);
   transition: 0.3s ease-in-out;
@@ -51,7 +51,12 @@ h3 {
 .downloadButton {
   margin-top: 1em;
   width: 30vw;
+
   & a {
     color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
   }
 }
