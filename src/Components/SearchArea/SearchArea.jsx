@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import { BookCard } from "../BookCard/BookCard";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
-const API_KEY = "AIzaSyCGdBrakyzRLdW3kBWnW3aibLiEk7rsO-s";
+const API_KEY = process.env.REACT_APP_apiKey;
 const maxResults = 3;
 const DEBOUNCE = 1000;
 

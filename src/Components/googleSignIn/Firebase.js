@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCNKU6f9J3X7q4b98vY1Pcf_dVDfKUW13Y",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "bookslibrary-49ee1.firebaseapp.com",
   projectId: "bookslibrary-49ee1",
   storageBucket: "bookslibrary-49ee1.appspot.com",
