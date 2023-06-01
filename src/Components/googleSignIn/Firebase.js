@@ -11,6 +11,8 @@ const firebaseConfig = {
   measurementId: "G-00V8XMNZCX",
 };
 
+console.log("typeof", typeof process.env.REACT_APP_API_KEY);
+console.log("API_KEY", process.env.REACT_APP_API_KEY);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
