@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { keys } from "../../config.js";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
+  apiKey: keys.API_KEY_AUTH,
   authDomain: "bookslibrary-49ee1.firebaseapp.com",
   projectId: "bookslibrary-49ee1",
   storageBucket: "bookslibrary-49ee1.appspot.com",
@@ -11,8 +12,6 @@ const firebaseConfig = {
   measurementId: "G-00V8XMNZCX",
 };
 
-console.log("typeof", typeof process.env.REACT_APP_API_KEY);
-console.log("API_KEY", process.env.REACT_APP_API_KEY);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();

@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 import { BookCard } from "../BookCard/BookCard";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
+import { keys } from "../../config.js";
+
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
-const API_KEY = process.env.REACT_APP_apiKey;
 const maxResults = 3;
 const DEBOUNCE = 1000;
 
@@ -15,39 +17,58 @@ export const SearchArea = (props) => {
   const [load, setLoad] = useState(false);
   const [searchValueResult, setSearchValueResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const isSearch = false;
 
+  const handleChange = (event) => {
+    const result = event.target.value
+      .toLowerCase()
+      .replace(/[^a-zа-я0-9 ]+/g, "");
+
+    setMessage(result);
+  };
+
   const searchBook = (e) => {
-    request
-      .get(`${API_URL}`)
-      .query({ q: e.target.value })
-      .then((data) => {
-        const { totalItems, items } = data.body;
-        setIsLoading(false);
-        setBooksTitles(
-          totalItems
-            ? items.map((book) => (
-                <BookCard
-                  key={book?.id}
-                  bookHref={book.volumeInfo?.previewLink}
-                  bookImg={book.volumeInfo.imageLinks?.thumbnail}
-                  bookTitle={book.volumeInfo?.title}
-                  bookAuthor={book.volumeInfo?.authors}
-                  bookPageCount={book.volumeInfo?.pageCount}
-                  bookPublished={book.volumeInfo?.publishedDate}
-                  isSearch={isSearch}
-                />
-              ))
-            : []
-        );
-        setLoad(false);
-      });
+    if (message.length <= 1) return;
+    e.preventDefault();
+
+    try {
+      request
+        .get(`${API_URL}`)
+        .query({ q: e.target.value })
+        .then((data) => {
+          const { totalItems, items } = data.body;
+          setIsLoading(false);
+          setBooksTitles(
+            totalItems
+              ? items.map((book) => (
+                  <BookCard
+                    key={book?.id}
+                    bookHref={book.volumeInfo?.previewLink}
+                    bookImg={book.volumeInfo.imageLinks?.thumbnail}
+                    bookTitle={book.volumeInfo?.title}
+                    bookAuthor={book.volumeInfo?.authors}
+                    bookPageCount={book.volumeInfo?.pageCount}
+                    bookPublished={book.volumeInfo?.publishedDate}
+                    isSearch={isSearch}
+                  />
+                ))
+              : []
+          );
+          setLoad(false);
+        });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const fetchBooks = (e) => {
+    if (message.length <= 1) setBooksTitles(false);
+
     e.preventDefault();
+    navigate("/books-search");
     request
-      .get(`${API_URL}?=book&key=${API_KEY}&maxResults=${maxResults}`)
+      .get(`${API_URL}?=book&key=${keys.API_KEY}&maxResults=${maxResults}`)
       .query({ q: e.target[0].value })
       .then((data) => {
         setBooks([...data.body.items]);
@@ -58,9 +79,12 @@ export const SearchArea = (props) => {
 
   const onSearch = (v) => {
     const search = debouncedSearch;
+    if (message.length <= 1) return;
+
     if (!v) {
       setBooksTitles(false);
       debouncedSearch.cancel();
+      debouncedSearch2.cancel();
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -70,14 +94,7 @@ export const SearchArea = (props) => {
   };
 
   const debouncedSearch = debounce(searchBook, DEBOUNCE);
-
-  const handleChange = (event) => {
-    const result = event.target.value
-      .toLowerCase()
-      .replace(/[^a-zа-я0-9 ]+/g, "");
-
-    setMessage(result);
-  };
+  const debouncedSearch2 = debounce(fetchBooks, DEBOUNCE);
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);

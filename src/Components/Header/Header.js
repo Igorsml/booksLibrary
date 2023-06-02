@@ -4,6 +4,7 @@ import "../../Pages/Home/Home.module.scss";
 import { ReactComponent as SvgLogo } from "../assets/icons/Logo.svg";
 import { UserAuth } from "../../Context/AuthContext";
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import { SearchArea } from "../SearchArea/SearchArea";
 
 export const Header = () => {
   const { user, logOut } = UserAuth();

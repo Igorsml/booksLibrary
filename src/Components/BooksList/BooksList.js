@@ -31,10 +31,6 @@ export const BooksList = (props) => {
 
         <div className={scss.booksList}>
           {props.books.map((book) => {
-            console.log(
-              "book.volumeInfo.imageLinks",
-              book.volumeInfo.imageLinks
-            );
             try {
               return (
                 <BookCard
