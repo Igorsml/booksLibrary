@@ -9,7 +9,7 @@ import { keys } from "../../config.js";
 
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 const maxResults = 3;
-const DEBOUNCE = 1000;
+const DEBOUNCE = 500;
 
 export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
@@ -29,9 +29,13 @@ export const SearchArea = (props) => {
   };
 
   const searchBook = (e) => {
-    if (message.length <= 1) return;
     e.preventDefault();
-
+    console.log("message length: " + message.length);
+    if (message.length <= 1) {
+      setLoad(false);
+      setIsLoading(false);
+      return;
+    }
     try {
       request
         .get(`${API_URL}`)
@@ -63,7 +67,8 @@ export const SearchArea = (props) => {
   };
 
   const fetchBooks = (e) => {
-    if (message.length <= 1) setBooksTitles(false);
+    if (message.length <= 1) {
+    }
 
     e.preventDefault();
     navigate("/books-search");
@@ -78,13 +83,18 @@ export const SearchArea = (props) => {
   };
 
   const onSearch = (v) => {
+    if (message.length <= 1) {
+      setLoad(false);
+      setIsLoading(false);
+    }
+
     const search = debouncedSearch;
-    if (message.length <= 1) return;
 
     if (!v) {
-      setBooksTitles(false);
       debouncedSearch.cancel();
       debouncedSearch2.cancel();
+      setBooksTitles(false);
+      setLoad(false);
       setIsLoading(false);
     } else {
       setIsLoading(true);
