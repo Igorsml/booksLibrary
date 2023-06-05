@@ -46,6 +46,12 @@ export const SignIn = () => {
           <button className={scss.logout} onClick={handleSignOut}>
             Logout
           </button>
+          <div className={scss.myBooks}>
+            <p>Your books list</p>
+            <p>Total number of books read:</p>
+            <p>Total number of pages of books read:</p>
+            <p>Favorite books:</p>
+          </div>
         </div>
       )}
     </div>

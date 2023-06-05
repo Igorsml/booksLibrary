@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import scss from "./BookCard.module.scss";
 import { Counter } from "../Counter/Counter";
 import { Link } from "react-router-dom";
 
 export const BookCard = (props) => {
+  const [bookCount, SetBookCount] = useState(0);
+  const [bookPagesCount, SetPagesBookCount] = useState(0);
+
+  const handleFavorite = () => {
+    if (props.bookId !== props.bookId) {
+      SetBookCount(bookCount);
+      SetPagesBookCount(bookPagesCount);
+    }
+  };
   try {
     return (
       <div className={scss.bookCard}>
@@ -25,9 +34,10 @@ export const BookCard = (props) => {
             handleCountIncrement={props?.handleCountIncrement}
             handleCountDecrement={props?.handleCountDecrement}
             bookPageCount={props.bookPageCount}
-            pageCount={props.pageCount}
             booksCount={props.booksCount}
             isSearch={props.isSearch}
+            bookId={props.bookId}
+            handleFavorite={handleFavorite}
           />
         )}
       </div>

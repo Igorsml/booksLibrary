@@ -2,6 +2,8 @@ import scss from "./Counter.module.scss";
 import React from "react";
 
 export const Counter = (props) => {
+  console.log("book id:", props?.bookId);
+
   return (
     <div className={scss.counterContainer}>
       {props.booksCount < 0 || props.booksCount === 1 || (

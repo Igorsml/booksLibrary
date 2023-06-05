@@ -13,7 +13,7 @@ function App() {
       <AuthContextProvider provider>
         <Routes>
           <Route path="/" element={<Home />} forceRefresh={true}>
-            <Route path="/books-search" element={<Books />}></Route>
+            <Route path="/books-search"></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/about" element={<About />}></Route>

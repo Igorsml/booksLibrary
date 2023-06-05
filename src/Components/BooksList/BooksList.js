@@ -46,6 +46,7 @@ export const BooksList = (props) => {
                   pageCount={pageCount}
                   booksCount={booksCount}
                   isSearch={isSearch}
+                  bookId={book?.id}
                 />
               );
             } catch (err) {
