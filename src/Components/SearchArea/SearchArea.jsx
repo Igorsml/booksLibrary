@@ -29,13 +29,6 @@ export const SearchArea = (props) => {
   };
 
   const searchBook = (e) => {
-    e.preventDefault();
-    console.log("message length: " + message.length);
-    if (message.length <= 1) {
-      setLoad(false);
-      setIsLoading(false);
-      return;
-    }
     try {
       request
         .get(`${API_URL}`)
@@ -67,9 +60,6 @@ export const SearchArea = (props) => {
   };
 
   const fetchBooks = (e) => {
-    if (message.length <= 1) {
-    }
-
     e.preventDefault();
     navigate("/books-search");
     request
@@ -84,8 +74,10 @@ export const SearchArea = (props) => {
 
   const onSearch = (v) => {
     if (message.length <= 1) {
+      console.log("message.length :", message.length);
       setLoad(false);
       setIsLoading(false);
+      return;
     }
 
     const search = debouncedSearch;

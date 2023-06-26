@@ -2,17 +2,16 @@ import scss from "./Counter.module.scss";
 import React from "react";
 
 export const Counter = (props) => {
-  console.log("book id:", props?.bookId);
-
   return (
     <div className={scss.counterContainer}>
       {props.booksCount < 0 || props.booksCount === 1 || (
         <button
           className={scss.btn}
-          onClick={() =>
-            props?.bookPageCount &&
-            props?.handleCountIncrement(props.bookPageCount)
-          }
+          onClick={() => {
+            // props?.bookPageCount &&
+            //   props?.handleCountIncrement(props.bookPageCount);
+            props?.handleFavorite(props?.bookId);
+          }}
         >
           ➕
         </button>
@@ -20,10 +19,10 @@ export const Counter = (props) => {
       {props.booksCount > 0 && (
         <button
           className={scss.btn}
-          onClick={() =>
-            props?.bookPageCount &&
-            props?.handleCountDecrement(props.bookPageCount)
-          }
+          // onClick={() =>
+          //   props?.bookPageCount &&
+          //   props?.handleCountDecrement(props.bookPageCount)
+          // }
         >
           ➖
         </button>

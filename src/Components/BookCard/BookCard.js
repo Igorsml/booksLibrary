@@ -6,13 +6,25 @@ import { Link } from "react-router-dom";
 export const BookCard = (props) => {
   const [bookCount, SetBookCount] = useState(0);
   const [bookPagesCount, SetPagesBookCount] = useState(0);
+  const [booksId, SetBooksId] = useState([]);
 
-  const handleFavorite = () => {
-    if (props.bookId !== props.bookId) {
-      SetBookCount(bookCount);
-      SetPagesBookCount(bookPagesCount);
+  const handleFavorite = (bookId) => {
+    if (booksId.indexOf(bookId) === -1) {
+      SetBooksId((booksId) => [...booksId, bookId]);
+    } else {
+      console.log("includes");
+      console.log("booksId:", booksId);
+    }
+
+    if (!booksId.includes(bookId)) {
+      SetBookCount(bookCount + 1);
+      SetPagesBookCount(bookPagesCount + props?.bookPageCount);
     }
   };
+
+  console.log("bookPagesCount:", bookPagesCount);
+  console.log("bookCount:", bookCount);
+
   try {
     return (
       <div className={scss.bookCard}>
@@ -20,7 +32,6 @@ export const BookCard = (props) => {
           <img className={scss.bookCardImg} src={props.bookImg} alt="img" />
 
           <h2>{props.bookTitle}</h2>
-
           {props.bookAuthor ? (
             <h3>Author: {props.bookAuthor}</h3>
           ) : (

@@ -6,15 +6,16 @@ export const BooksList = (props) => {
   const [pageCount, SetPageCount] = useState(0);
   const [booksCount, SetBookCount] = useState(0);
 
-  const handleCountIncrement = (booksPages) => {
-    SetPageCount(pageCount + booksPages);
-    SetBookCount(booksCount + 1);
-  };
+  // const handleCountIncrement = (booksPages) => {
+  //   SetPageCount(pageCount + booksPages);
+  //   SetBookCount(booksCount + 1);
+  // };
 
-  const handleCountDecrement = (booksPages) => {
-    SetPageCount(pageCount - booksPages);
-    SetBookCount(booksCount - 1);
-  };
+  // const handleCountDecrement = (booksPages) => {
+  //   SetPageCount(pageCount - booksPages);
+  //   SetBookCount(booksCount - 1);
+  // };
+
   const isSearch = true;
 
   return (
@@ -41,8 +42,8 @@ export const BooksList = (props) => {
                   bookAuthor={book.volumeInfo?.authors}
                   bookPageCount={book.volumeInfo?.pageCount}
                   bookPublished={book.volumeInfo?.publishedDate}
-                  handleCountIncrement={handleCountIncrement}
-                  handleCountDecrement={handleCountDecrement}
+                  // handleCountIncrement={handleCountIncrement}
+                  // handleCountDecrement={handleCountDecrement}
                   pageCount={pageCount}
                   booksCount={booksCount}
                   isSearch={isSearch}
