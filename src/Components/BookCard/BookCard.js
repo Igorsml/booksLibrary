@@ -4,23 +4,17 @@ import { Counter } from "../Counter/Counter";
 import { Link } from "react-router-dom";
 
 export const BookCard = (props) => {
-  const [bookCount, SetBookCount] = useState(0);
-  const [bookPagesCount, SetPagesBookCount] = useState(0);
-
   const handleFavorite = (bookId) => {
     if (props?.booksId.indexOf(bookId) === -1) {
       props?.SetBooksId((booksId) => [...booksId, bookId]);
-    }
-
-    if (!props?.booksId.includes(bookId)) {
-      SetBookCount(bookCount + 1);
-      SetPagesBookCount(bookPagesCount + props?.bookPageCount);
+      props?.SetBookCount(props?.booksCount + 1);
+      props?.SetPagesCount(props?.pagesCount + props?.bookPageCount);
     }
   };
-  console.log("booksId 1:", props?.booksId);
 
-  // console.log("bookPagesCount:", bookPagesCount);
-  // console.log("bookCount:", bookCount);
+  console.log("booksId:", props?.booksId);
+  console.log("bookPagesCount:", props?.pagesCount);
+  console.log("bookCount:", props?.booksCount);
 
   try {
     return (

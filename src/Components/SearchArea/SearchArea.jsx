@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
@@ -6,7 +7,7 @@ import { BookCard } from "../BookCard/BookCard";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 const API_KEY = "AIzaSyCGdBrakyzRLdW3kBWnW3aibLiEk7rsO-s";
-const maxResults = 12;
+const maxResults = 3;
 const DEBOUNCE = 1000;
 
 export const SearchArea = (props) => {
@@ -15,6 +16,7 @@ export const SearchArea = (props) => {
   const [load, setLoad] = useState(false);
   const [searchValueResult, setSearchValueResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const isSearch = false;
 
   const searchBook = (e) => {
@@ -50,6 +52,7 @@ export const SearchArea = (props) => {
       .get(`${API_URL}?=book&key=${API_KEY}&maxResults=${maxResults}`)
       .query({ q: e.target[0].value })
       .then((data) => {
+        // navigate("/search");
         setBooks([...data.body.items]);
         setBooksTitles(false);
         setSearchValueResult(e.target[0].value);

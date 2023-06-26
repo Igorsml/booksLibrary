@@ -3,7 +3,7 @@ import scss from "./BooksList.module.scss";
 import { BookCard } from "../BookCard/BookCard";
 
 export const BooksList = (props) => {
-  const [pageCount, SetPageCount] = useState(0);
+  const [pagesCount, SetPagesCount] = useState(0);
   const [booksCount, SetBookCount] = useState(0);
   const [booksId, SetBooksId] = useState([]);
   // const [bookCount, SetBookCount] = useState(0);
@@ -28,7 +28,7 @@ export const BooksList = (props) => {
             Books counter: {booksCount < 0 ? SetBookCount(0) : booksCount}
           </div>
           <div className={scss.booksPagesCounter}>
-            Pages counter: {pageCount < 0 ? SetPageCount(0) : pageCount}
+            Pages counter: {pagesCount < 0 ? SetPagesCount(0) : pagesCount}
           </div>
         </div>
 
@@ -44,8 +44,10 @@ export const BooksList = (props) => {
                   bookAuthor={book.volumeInfo?.authors}
                   bookPageCount={book.volumeInfo?.pageCount}
                   bookPublished={book.volumeInfo?.publishedDate}
-                  pageCount={pageCount}
+                  pagesCount={pagesCount}
                   booksCount={booksCount}
+                  SetPagesCount={SetPagesCount}
+                  SetBookCount={SetBookCount}
                   isSearch={isSearch}
                   bookId={book?.id}
                   booksId={booksId}
