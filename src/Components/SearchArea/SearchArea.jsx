@@ -1,15 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import scss from "./SearchArea.module.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 import { BookCard } from "../BookCard/BookCard";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
-import { keys } from "../../config.js";
-
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
-const maxResults = 3;
-const DEBOUNCE = 500;
+const API_KEY = "AIzaSyCGdBrakyzRLdW3kBWnW3aibLiEk7rsO-s";
+const maxResults = 12;
+const DEBOUNCE = 1000;
 
 export const SearchArea = (props) => {
   const { setBooks, setBooksTitles } = props;
@@ -17,53 +15,39 @@ export const SearchArea = (props) => {
   const [load, setLoad] = useState(false);
   const [searchValueResult, setSearchValueResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   const isSearch = false;
 
-  const handleChange = (event) => {
-    const result = event.target.value
-      .toLowerCase()
-      .replace(/[^a-zа-я0-9 ]+/g, "");
-
-    setMessage(result);
-  };
-
   const searchBook = (e) => {
-    try {
-      request
-        .get(`${API_URL}`)
-        .query({ q: e.target.value })
-        .then((data) => {
-          const { totalItems, items } = data.body;
-          setIsLoading(false);
-          setBooksTitles(
-            totalItems
-              ? items.map((book) => (
-                  <BookCard
-                    key={book?.id}
-                    bookHref={book.volumeInfo?.previewLink}
-                    bookImg={book.volumeInfo.imageLinks?.thumbnail}
-                    bookTitle={book.volumeInfo?.title}
-                    bookAuthor={book.volumeInfo?.authors}
-                    bookPageCount={book.volumeInfo?.pageCount}
-                    bookPublished={book.volumeInfo?.publishedDate}
-                    isSearch={isSearch}
-                  />
-                ))
-              : []
-          );
-          setLoad(false);
-        });
-    } catch (err) {
-      console.error(err);
-    }
+    request
+      .get(`${API_URL}`)
+      .query({ q: e.target.value })
+      .then((data) => {
+        const { totalItems, items } = data.body;
+        setIsLoading(false);
+        setBooksTitles(
+          totalItems
+            ? items.map((book) => (
+                <BookCard
+                  key={book?.id}
+                  bookHref={book.volumeInfo?.previewLink}
+                  bookImg={book.volumeInfo.imageLinks?.thumbnail}
+                  bookTitle={book.volumeInfo?.title}
+                  bookAuthor={book.volumeInfo?.authors}
+                  bookPageCount={book.volumeInfo?.pageCount}
+                  bookPublished={book.volumeInfo?.publishedDate}
+                  isSearch={isSearch}
+                />
+              ))
+            : []
+        );
+        setLoad(false);
+      });
   };
 
   const fetchBooks = (e) => {
     e.preventDefault();
-    navigate("/books-search");
     request
-      .get(`${API_URL}?=book&key=${keys.API_KEY}&maxResults=${maxResults}`)
+      .get(`${API_URL}?=book&key=${API_KEY}&maxResults=${maxResults}`)
       .query({ q: e.target[0].value })
       .then((data) => {
         setBooks([...data.body.items]);
@@ -73,20 +57,10 @@ export const SearchArea = (props) => {
   };
 
   const onSearch = (v) => {
-    if (message.length <= 1) {
-      console.log("message.length :", message.length);
-      setLoad(false);
-      setIsLoading(false);
-      return;
-    }
-
     const search = debouncedSearch;
-
     if (!v) {
-      debouncedSearch.cancel();
-      debouncedSearch2.cancel();
       setBooksTitles(false);
-      setLoad(false);
+      debouncedSearch.cancel();
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -96,7 +70,14 @@ export const SearchArea = (props) => {
   };
 
   const debouncedSearch = debounce(searchBook, DEBOUNCE);
-  const debouncedSearch2 = debounce(fetchBooks, DEBOUNCE);
+
+  const handleChange = (event) => {
+    const result = event.target.value
+      .toLowerCase()
+      .replace(/[^a-zа-я0-9 ]+/g, "");
+
+    setMessage(result);
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);

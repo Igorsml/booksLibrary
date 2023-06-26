@@ -6,24 +6,21 @@ import { Link } from "react-router-dom";
 export const BookCard = (props) => {
   const [bookCount, SetBookCount] = useState(0);
   const [bookPagesCount, SetPagesBookCount] = useState(0);
-  const [booksId, SetBooksId] = useState([]);
 
   const handleFavorite = (bookId) => {
-    if (booksId.indexOf(bookId) === -1) {
-      SetBooksId((booksId) => [...booksId, bookId]);
-    } else {
-      console.log("includes");
-      console.log("booksId:", booksId);
+    if (props?.booksId.indexOf(bookId) === -1) {
+      props?.SetBooksId((booksId) => [...booksId, bookId]);
     }
 
-    if (!booksId.includes(bookId)) {
+    if (!props?.booksId.includes(bookId)) {
       SetBookCount(bookCount + 1);
       SetPagesBookCount(bookPagesCount + props?.bookPageCount);
     }
   };
+  console.log("booksId 1:", props?.booksId);
 
-  console.log("bookPagesCount:", bookPagesCount);
-  console.log("bookCount:", bookCount);
+  // console.log("bookPagesCount:", bookPagesCount);
+  // console.log("bookCount:", bookCount);
 
   try {
     return (

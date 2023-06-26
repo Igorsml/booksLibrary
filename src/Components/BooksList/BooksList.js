@@ -5,7 +5,9 @@ import { BookCard } from "../BookCard/BookCard";
 export const BooksList = (props) => {
   const [pageCount, SetPageCount] = useState(0);
   const [booksCount, SetBookCount] = useState(0);
-
+  const [booksId, SetBooksId] = useState([]);
+  // const [bookCount, SetBookCount] = useState(0);
+  const [bookPagesCount, SetPagesBookCount] = useState(0);
   // const handleCountIncrement = (booksPages) => {
   //   SetPageCount(pageCount + booksPages);
   //   SetBookCount(booksCount + 1);
@@ -42,12 +44,12 @@ export const BooksList = (props) => {
                   bookAuthor={book.volumeInfo?.authors}
                   bookPageCount={book.volumeInfo?.pageCount}
                   bookPublished={book.volumeInfo?.publishedDate}
-                  // handleCountIncrement={handleCountIncrement}
-                  // handleCountDecrement={handleCountDecrement}
                   pageCount={pageCount}
                   booksCount={booksCount}
                   isSearch={isSearch}
                   bookId={book?.id}
+                  booksId={booksId}
+                  SetBooksId={SetBooksId}
                 />
               );
             } catch (err) {
