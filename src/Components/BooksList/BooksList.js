@@ -6,18 +6,6 @@ export const BooksList = (props) => {
   const [pagesCount, SetPagesCount] = useState(0);
   const [booksCount, SetBookCount] = useState(0);
   const [booksId, SetBooksId] = useState([]);
-  // const [bookCount, SetBookCount] = useState(0);
-  const [bookPagesCount, SetPagesBookCount] = useState(0);
-  // const handleCountIncrement = (booksPages) => {
-  //   SetPageCount(pageCount + booksPages);
-  //   SetBookCount(booksCount + 1);
-  // };
-
-  // const handleCountDecrement = (booksPages) => {
-  //   SetPageCount(pageCount - booksPages);
-  //   SetBookCount(booksCount - 1);
-  // };
-
   const isSearch = true;
 
   return (

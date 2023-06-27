@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import scss from "./BookCard.module.scss";
 import { Counter } from "../Counter/Counter";
 import { Link } from "react-router-dom";
@@ -12,9 +12,21 @@ export const BookCard = (props) => {
     }
   };
 
-  console.log("booksId:", props?.booksId);
-  console.log("bookPagesCount:", props?.pagesCount);
-  console.log("bookCount:", props?.booksCount);
+  const handleFavoriteRemove = (bookId) => {
+    // props?.setBooksId((bookId) =>
+    //   props?.booksId.filter((item) => item !== bookId)
+    // );
+    const index = props?.booksId.findIndex((id) => id === bookId);
+    console.log("index:", index);
+    if (index !== -1) {
+      props?.SetBooksId([
+        ...props?.booksId.slice(0, index),
+        ...props?.booksId.slice(index + 1),
+      ]);
+      props?.SetBookCount(props?.booksCount - 1);
+      props?.SetPagesCount(props?.pagesCount - props?.bookPageCount);
+    }
+  };
 
   try {
     return (
@@ -40,6 +52,7 @@ export const BookCard = (props) => {
             isSearch={props.isSearch}
             bookId={props.bookId}
             handleFavorite={handleFavorite}
+            handleFavoriteRemove={handleFavoriteRemove}
           />
         )}
       </div>
