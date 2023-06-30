@@ -13,11 +13,8 @@ export const BookCard = (props) => {
   };
 
   const handleFavoriteRemove = (bookId) => {
-    // props?.setBooksId((bookId) =>
-    //   props?.booksId.filter((item) => item !== bookId)
-    // );
     const index = props?.booksId.findIndex((id) => id === bookId);
-    console.log("index:", index);
+
     if (index !== -1) {
       props?.SetBooksId([
         ...props?.booksId.slice(0, index),

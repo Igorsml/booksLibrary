@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import scss from "./SearchArea.module.scss";
-import request from "superagent";
+import axios from "axios";
 import debounce from "lodash.debounce";
 import { BookCard } from "../BookCard/BookCard";
 import preloader from "../../Components/assets/icons/Icons_search.gif";
@@ -20,12 +20,9 @@ export const SearchArea = (props) => {
   const isSearch = false;
 
   const searchBook = (e) => {
-    request
-      .get(`${API_URL}`)
-      .query({ q: e.target.value })
-      .then((data) => {
-        const { totalItems, items } = data.body;
-        setIsLoading(false);
+    if (e.target.value.length > 1) {
+      axios.get(`${API_URL}?q=${e.target.value}`).then((response) => {
+        const { totalItems, items } = response.data;
         setBooksTitles(
           totalItems
             ? items.map((book) => (
@@ -44,31 +41,33 @@ export const SearchArea = (props) => {
         );
         setLoad(false);
       });
+    } else {
+      setIsLoading(false);
+      setBooksTitles(false);
+    }
   };
-
   const fetchBooks = (e) => {
     e.preventDefault();
-    request
-      .get(`${API_URL}?=book&key=${API_KEY}&maxResults=${maxResults}`)
-      .query({ q: e.target[0].value })
-      .then((data) => {
+    axios
+      .get(`${API_URL}?q=${e.target.value}&maxResults=${maxResults}`)
+      .then((response) => {
         // navigate("/search");
-        setBooks([...data.body.items]);
+        setBooks([...response.data.items]);
         setBooksTitles(false);
         setSearchValueResult(e.target[0].value);
       });
   };
 
-  const onSearch = (v) => {
+  const onSearch = (value) => {
     const search = debouncedSearch;
-    if (!v) {
+    if (!value && message.length > 1) {
       setBooksTitles(false);
       debouncedSearch.cancel();
       setIsLoading(false);
     } else {
       setIsLoading(true);
       setLoad(true);
-      search(v, setBooksTitles, setIsLoading);
+      search(value, setBooksTitles, setIsLoading);
     }
   };
 
