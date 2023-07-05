@@ -4,7 +4,7 @@ import { Header } from "../../Components/Header/Header";
 import { Books } from "../../Components/Books/Books";
 import { Footer } from "../../Components/Footer/Footer";
 
-export const Home = () => {
+export const Home = (props) => {
   return (
     <div className={scss.layout}>
       <Header />

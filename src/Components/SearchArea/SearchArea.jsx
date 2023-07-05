@@ -40,9 +40,9 @@ export const SearchArea = (props) => {
             : []
         );
         setLoad(false);
+        setIsLoading(false);
       });
     } else {
-      setIsLoading(false);
       setBooksTitles(false);
     }
   };
@@ -51,7 +51,7 @@ export const SearchArea = (props) => {
     axios
       .get(`${API_URL}?q=${e.target.value}&maxResults=${maxResults}`)
       .then((response) => {
-        // navigate("/search");
+        navigate("/search");
         setBooks([...response.data.items]);
         setBooksTitles(false);
         setSearchValueResult(e.target[0].value);
@@ -60,7 +60,7 @@ export const SearchArea = (props) => {
 
   const onSearch = (value) => {
     const search = debouncedSearch;
-    if (!value && message.length > 1) {
+    if (!value) {
       setBooksTitles(false);
       debouncedSearch.cancel();
       setIsLoading(false);
@@ -101,6 +101,7 @@ export const SearchArea = (props) => {
   const handleClickOutside = (e) => {
     if (!ref.current.contains(e.target) || e.key === "Escape") {
       setBooksTitles(false);
+      setIsLoading(false);
     }
   };
 
