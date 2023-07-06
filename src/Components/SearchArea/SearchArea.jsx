@@ -46,15 +46,16 @@ export const SearchArea = (props) => {
       setBooksTitles(false);
     }
   };
+
   const fetchBooks = (e) => {
     e.preventDefault();
     axios
-      .get(`${API_URL}?q=${e.target.value}&maxResults=${maxResults}`)
+      .get(`${API_URL}?q=${e.target[0].value}&maxResults=${maxResults}`)
       .then((response) => {
-        navigate("/search");
         setBooks([...response.data.items]);
         setBooksTitles(false);
-        setSearchValueResult(e.target[0].value);
+        setSearchValueResult(e.target.value);
+        navigate("/search");
       });
   };
 

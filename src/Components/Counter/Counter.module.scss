@@ -19,15 +19,12 @@
   border: none;
   cursor: pointer;
   opacity: 0.6;
+  transition: opacity, color 0.2s linear;
+}
+
+.btn:hover {
+  opacity: 1;
+  color: #fff;
   transition: opacity 0.2s linear;
-
-  &:hover {
-    opacity: 1;
-    color: #fff;
-    transition: opacity 0.2s linear;
-  }
-
-  &:active {
-    opacity: 1;
-  }
+  opacity: 1;
 }

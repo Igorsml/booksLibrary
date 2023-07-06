@@ -4,7 +4,11 @@ a {
 }
 
 a:hover {
-  color: #457abf;
+  color: #7ca6df;
+}
+
+a:active {
+  color: #c0d7f8;
 }
 
 .active {

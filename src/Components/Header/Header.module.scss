@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
   border-bottom: 1px solid #ccc;
   font-size: calc((100vw - 35em) / (80 - 3) * (1.5 - 1) + 1em);
@@ -32,10 +32,11 @@
 
 .headerLinks {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 40%;
   color: inherit;
   margin-left: 1em;
+  gap: 1em;
   justify-content: space-between;
   transition: color 0.2s linear;
 }

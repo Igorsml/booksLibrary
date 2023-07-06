@@ -16,9 +16,9 @@ function App() {
       <AuthContextProvider provider>
         <Routes>
           <Route path="/" element={<Home />} forceRefresh={true}>
-            <Route path="/search" element={<Books />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="search" element={<Books />}></Route>
+            <Route path="about" element={<About />}></Route>
+            <Route path="signin" element={<SignIn />}></Route>
             <Route path="books/:id" element={<ProductBookCard />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Route>
